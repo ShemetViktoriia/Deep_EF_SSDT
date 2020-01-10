@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.960
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Deep_EF_SSDT.Database", "Deep_EF_SSDT.Database\Deep_EF_SSDT.Database.sqlproj", "{70153B99-B159-40AE-923D-FA3BD8DF365B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70153B99-B159-40AE-923D-FA3BD8DF365B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70153B99-B159-40AE-923D-FA3BD8DF365B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70153B99-B159-40AE-923D-FA3BD8DF365B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{70153B99-B159-40AE-923D-FA3BD8DF365B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70153B99-B159-40AE-923D-FA3BD8DF365B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70153B99-B159-40AE-923D-FA3BD8DF365B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E579F98F-6512-4A7F-8BC6-7A2B96BD019B}
+	EndGlobalSection
+EndGlobal
