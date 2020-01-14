@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.960
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Deep_EF_SSDT.Database", "Deep_EF_SSDT.Database\Deep_EF_SSDT.Database.sqlproj", "{70153B99-B159-40AE-923D-FA3BD8DF365B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deep_EF_SSDT.DataAccessLayer", "Deep_EF_SSDT.DataAccessLayer\Deep_EF_SSDT.DataAccessLayer.csproj", "{24B91F4F-E5E2-459A-B144-885529D6BBC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{70153B99-B159-40AE-923D-FA3BD8DF365B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70153B99-B159-40AE-923D-FA3BD8DF365B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{70153B99-B159-40AE-923D-FA3BD8DF365B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{24B91F4F-E5E2-459A-B144-885529D6BBC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24B91F4F-E5E2-459A-B144-885529D6BBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24B91F4F-E5E2-459A-B144-885529D6BBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24B91F4F-E5E2-459A-B144-885529D6BBC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
