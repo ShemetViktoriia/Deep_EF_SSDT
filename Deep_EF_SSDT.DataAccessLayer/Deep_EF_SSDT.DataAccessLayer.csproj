@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookDetails.cs">
+      <DependentUpon>BookModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="BookModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
