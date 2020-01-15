@@ -44,6 +44,14 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A503B0_SSDT.dbo.vBook' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vBook">
+          <Key>
+            <PropertyRef Name="BookInfo" />
+          </Key>
+          <Property Name="BookInfo" Type="nvarchar" MaxLength="4000" Nullable="false" />
+        </EntityType>
         <Association Name="FK_BookDetails_Reference_Books">
           <End Role="Books" Type="Self.Books" Multiplicity="1" />
           <End Role="BookDetails" Type="Self.BookDetails" Multiplicity="0..1" />
@@ -98,6 +106,11 @@
           <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BooksAuthors" EntityType="Self.BooksAuthors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Publishers" EntityType="Self.Publishers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vBook" EntityType="Self.vBook" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vBook].[BookInfo] AS [BookInfo]
+    FROM [dbo].[vBook] AS [vBook]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_BookDetails_Reference_Books" Association="Self.FK_BookDetails_Reference_Books">
             <End Role="Books" EntitySet="Books" />
             <End Role="BookDetails" EntitySet="BookDetails" />
@@ -141,6 +154,7 @@
             <End Role="Books" EntitySet="Books" />
             <End Role="BooksAuthors" EntitySet="BooksAuthors" />
           </AssociationSet>
+          <EntitySet Name="vBook" EntityType="DALModel.vBook" />
           </EntityContainer>
         <EntityType Name="BookDetails">
           <Key>
@@ -237,6 +251,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vBook">
+          <Key>
+            <PropertyRef Name="BookInfo" />
+          </Key>
+          <Property Name="BookInfo" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -284,6 +304,13 @@
               <MappingFragment StoreEntitySet="Publishers">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vBook">
+            <EntityTypeMapping TypeName="DALModel.vBook">
+              <MappingFragment StoreEntitySet="vBook">
+                <ScalarProperty Name="BookInfo" ColumnName="BookInfo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -81,6 +81,9 @@
     <Compile Include="Publishers.cs">
       <DependentUpon>BookModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="vBook.cs">
+      <DependentUpon>BookModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="BookModel.edmx">
