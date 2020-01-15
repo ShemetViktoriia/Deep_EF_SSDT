@@ -11,13 +11,13 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="Number of pages" Type="int" Nullable="false" />
+          <Property Name="NumberOfPages" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Books">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
@@ -48,7 +48,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Number_of_pages" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfPages" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -68,7 +68,7 @@
           <EntitySetMapping Name="BookDetails">
             <EntityTypeMapping TypeName="DALModel.BookDetails">
               <MappingFragment StoreEntitySet="BookDetails">
-                <ScalarProperty Name="Number_of_pages" ColumnName="Number of pages" />
+                <ScalarProperty Name="NumberOfPages" ColumnName="NumberOfPages" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
