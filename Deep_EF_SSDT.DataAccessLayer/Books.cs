@@ -18,6 +18,7 @@ namespace Deep_EF_SSDT.DataAccessLayer
         public Books()
         {
             this.Publishers = new HashSet<Publishers>();
+            this.BooksAuthors = new HashSet<BooksAuthors>();
         }
     
         public int Id { get; set; }
@@ -27,5 +28,7 @@ namespace Deep_EF_SSDT.DataAccessLayer
         public virtual BookDetails BookDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Publishers> Publishers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BooksAuthors> BooksAuthors { get; set; }
     }
 }

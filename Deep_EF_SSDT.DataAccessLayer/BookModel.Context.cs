@@ -29,5 +29,6 @@ namespace Deep_EF_SSDT.DataAccessLayer
         public virtual DbSet<Books> Books { get; set; }
         public virtual DbSet<Publishers> Publishers { get; set; }
         public virtual DbSet<Authors> Authors { get; set; }
+        public virtual DbSet<BooksAuthors> BooksAuthors { get; set; }
     }
 }

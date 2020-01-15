@@ -28,6 +28,14 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="BooksAuthors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Publishers">
           <Key>
             <PropertyRef Name="Id" />
@@ -48,6 +56,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_BooksAuthors_Reference_Authors">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+          <End Role="BooksAuthors" Type="Self.BooksAuthors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BooksAuthors">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BooksAuthors_Reference_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="BooksAuthors" Type="Self.BooksAuthors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BooksAuthors">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Publishers_Reference_Books">
           <End Role="Books" Type="Self.Books" Multiplicity="1" />
           <End Role="Publishers" Type="Self.Publishers" Multiplicity="*" />
@@ -64,10 +96,19 @@
           <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BookDetails" EntityType="Self.BookDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BooksAuthors" EntityType="Self.BooksAuthors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Publishers" EntityType="Self.Publishers" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BookDetails_Reference_Books" Association="Self.FK_BookDetails_Reference_Books">
             <End Role="Books" EntitySet="Books" />
             <End Role="BookDetails" EntitySet="BookDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BooksAuthors_Reference_Authors" Association="Self.FK_BooksAuthors_Reference_Authors">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="BooksAuthors" EntitySet="BooksAuthors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BooksAuthors_Reference_Books" Association="Self.FK_BooksAuthors_Reference_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="BooksAuthors" EntitySet="BooksAuthors" />
           </AssociationSet>
           <AssociationSet Name="FK_Publishers_Reference_Books" Association="Self.FK_Publishers_Reference_Books">
             <End Role="Books" EntitySet="Books" />
@@ -91,6 +132,15 @@
             <End Role="Publishers" EntitySet="Publishers" />
           </AssociationSet>
           <EntitySet Name="Authors" EntityType="DALModel.Authors" />
+          <EntitySet Name="BooksAuthors" EntityType="DALModel.BooksAuthors" />
+          <AssociationSet Name="FK_BooksAuthors_Reference_Authors" Association="DALModel.FK_BooksAuthors_Reference_Authors">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="BooksAuthors" EntitySet="BooksAuthors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BooksAuthors_Reference_Books" Association="DALModel.FK_BooksAuthors_Reference_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="BooksAuthors" EntitySet="BooksAuthors" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="BookDetails">
           <Key>
@@ -110,6 +160,7 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="BookDetails" Relationship="DALModel.FK_BookDetails_Reference_Books" FromRole="Books" ToRole="BookDetails" />
           <NavigationProperty Name="Publishers" Relationship="DALModel.FK_Publishers_Reference_Books" FromRole="Books" ToRole="Publishers" />
+          <NavigationProperty Name="BooksAuthors" Relationship="DALModel.FK_BooksAuthors_Reference_Books" FromRole="Books" ToRole="BooksAuthors" />
         </EntityType>
         <Association Name="FK_BookDetails_Reference_Books">
           <End Type="DALModel.Books" Role="Books" Multiplicity="1" />
@@ -150,7 +201,42 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BooksAuthors" Relationship="DALModel.FK_BooksAuthors_Reference_Authors" FromRole="Authors" ToRole="BooksAuthors" />
         </EntityType>
+        <EntityType Name="BooksAuthors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Authors" Relationship="DALModel.FK_BooksAuthors_Reference_Authors" FromRole="BooksAuthors" ToRole="Authors" />
+          <NavigationProperty Name="Books" Relationship="DALModel.FK_BooksAuthors_Reference_Books" FromRole="BooksAuthors" ToRole="Books" />
+        </EntityType>
+        <Association Name="FK_BooksAuthors_Reference_Authors">
+          <End Type="DALModel.Authors" Role="Authors" Multiplicity="1" />
+          <End Type="DALModel.BooksAuthors" Role="BooksAuthors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BooksAuthors">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BooksAuthors_Reference_Books">
+          <End Type="DALModel.Books" Role="Books" Multiplicity="1" />
+          <End Type="DALModel.BooksAuthors" Role="BooksAuthors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BooksAuthors">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -188,6 +274,15 @@
             <EntityTypeMapping TypeName="DALModel.Authors">
               <MappingFragment StoreEntitySet="Authors">
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BooksAuthors">
+            <EntityTypeMapping TypeName="DALModel.BooksAuthors">
+              <MappingFragment StoreEntitySet="BooksAuthors">
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

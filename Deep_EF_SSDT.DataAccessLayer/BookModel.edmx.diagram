@@ -5,12 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ad6a4d84e9fd4870825a139c03884e67" Name="Diagram1">
-        <EntityTypeShape EntityType="DALModel.BookDetails" Width="1.5" PointX="0.5" PointY="1" />
-        <EntityTypeShape EntityType="DALModel.Books" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="DALModel.BookDetails" Width="1.5" PointX="0.5" PointY="2" />
+        <EntityTypeShape EntityType="DALModel.Books" Width="1.5" PointX="2.75" PointY="1.75" />
         <AssociationConnector Association="DALModel.FK_BookDetails_Reference_Books" />
-        <EntityTypeShape EntityType="DALModel.Publishers" Width="1.5" PointX="5.625" PointY="1.125" />
+        <EntityTypeShape EntityType="DALModel.Publishers" Width="1.5" PointX="3" PointY="4.75" />
         <AssociationConnector Association="DALModel.FK_Publishers_Reference_Books" />
-        <EntityTypeShape EntityType="DALModel.Authors" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DALModel.Authors" Width="1.5" PointX="5.375" PointY="4.625" />
+        <EntityTypeShape EntityType="DALModel.BooksAuthors" Width="1.5" PointX="5.125" PointY="2.125" />
+        <AssociationConnector Association="DALModel.FK_BooksAuthors_Reference_Authors" />
+        <AssociationConnector Association="DALModel.FK_BooksAuthors_Reference_Books" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
