@@ -14,10 +14,16 @@ namespace Deep_EF_SSDT.DataAccessLayer
     
     public partial class Publishers
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Publishers()
+        {
+            this.Books = new HashSet<Books>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
-        public int BookId { get; set; }
     
-        public virtual Books Books { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Books> Books { get; set; }
     }
 }
