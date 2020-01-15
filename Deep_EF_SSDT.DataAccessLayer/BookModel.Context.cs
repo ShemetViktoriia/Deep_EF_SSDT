@@ -25,7 +25,7 @@ namespace Deep_EF_SSDT.DataAccessLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Books> Books { get; set; }
         public virtual DbSet<BookDetails> BookDetails { get; set; }
+        public virtual DbSet<Books> Books { get; set; }
     }
 }

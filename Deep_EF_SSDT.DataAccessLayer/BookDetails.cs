@@ -17,5 +17,7 @@ namespace Deep_EF_SSDT.DataAccessLayer
         public int Id { get; set; }
         public string Description { get; set; }
         public int NumberOfPages { get; set; }
+    
+        public virtual Books Books { get; set; }
     }
 }
