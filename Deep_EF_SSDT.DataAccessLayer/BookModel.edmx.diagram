@@ -10,6 +10,7 @@
         <AssociationConnector Association="DALModel.FK_BookDetails_Reference_Books" />
         <EntityTypeShape EntityType="DALModel.Publishers" Width="1.5" PointX="5.625" PointY="1.125" />
         <AssociationConnector Association="DALModel.FK_Publishers_Reference_Books" />
+        <EntityTypeShape EntityType="DALModel.Authors" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
