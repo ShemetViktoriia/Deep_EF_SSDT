@@ -100,6 +100,9 @@ warning 6002: The table/view 'DB_A503B0_SSDT.dbo.vBook' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="BooksListByAuthor_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="authorId" Type="int" Mode="In" />
+        </Function>
         <Function Name="CountOfBooksByAuthor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="authorId" Type="int" Mode="In" />
         </Function>
@@ -158,6 +161,9 @@ warning 6002: The table/view 'DB_A503B0_SSDT.dbo.vBook' does not have a primary 
             <End Role="BooksAuthors" EntitySet="BooksAuthors" />
           </AssociationSet>
           <EntitySet Name="vBook" EntityType="DALModel.vBook" />
+          <FunctionImport Name="BooksListByAuthor_sp" ReturnType="Collection(String)">
+            <Parameter Name="authorId" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="BookDetails">
           <Key>
@@ -317,6 +323,7 @@ warning 6002: The table/view 'DB_A503B0_SSDT.dbo.vBook' does not have a primary 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BooksListByAuthor_sp" FunctionName="DALModel.Store.BooksListByAuthor_sp" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -61,6 +61,7 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Views" />
     <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Books.sql" />
@@ -69,6 +70,7 @@
     <Build Include="dbo\Tables\Authors.sql" />
     <Build Include="dbo\Tables\BooksAuthors.sql" />
     <Build Include="dbo\Views\vBook.sql" />
-    <Build Include="dbo\Stored Procedures\CountOfBooksByAuthor.sql" />
+    <Build Include="dbo\Functions\CountOfBooksByAuthor.sql" />
+    <Build Include="dbo\Stored Procedures\BooksListByAuthor_sp.sql" />
   </ItemGroup>
 </Project>
