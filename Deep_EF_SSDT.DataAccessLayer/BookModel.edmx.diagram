@@ -5,6 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ad6a4d84e9fd4870825a139c03884e67" Name="Diagram1">
+        <EntityTypeShape EntityType="DALModel.BookDetails" Width="1.5" PointX="1.5" PointY="0.875" />
+        <EntityTypeShape EntityType="DALModel.Books" Width="1.5" PointX="4.5" PointY="1" />
+        <AssociationConnector Association="DALModel.FK_BookDetails_Reference_Books" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
