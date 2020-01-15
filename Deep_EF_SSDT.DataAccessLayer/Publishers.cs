@@ -12,20 +12,12 @@ namespace Deep_EF_SSDT.DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Books
+    public partial class Publishers
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Books()
-        {
-            this.Publishers = new HashSet<Publishers>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsActive { get; set; }
+        public int BookId { get; set; }
     
-        public virtual BookDetails BookDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Publishers> Publishers { get; set; }
+        public virtual Books Books { get; set; }
     }
 }

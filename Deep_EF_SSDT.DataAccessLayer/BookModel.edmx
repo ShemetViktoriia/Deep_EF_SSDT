@@ -21,6 +21,14 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Publishers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_BookDetails_Reference_Books">
           <End Role="Books" Type="Self.Books" Multiplicity="1" />
           <End Role="BookDetails" Type="Self.BookDetails" Multiplicity="0..1" />
@@ -33,12 +41,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Publishers_Reference_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="Publishers" Type="Self.Publishers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Publishers">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DALModelStoreContainer">
           <EntitySet Name="BookDetails" EntityType="Self.BookDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publishers" EntityType="Self.Publishers" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BookDetails_Reference_Books" Association="Self.FK_BookDetails_Reference_Books">
             <End Role="Books" EntitySet="Books" />
             <End Role="BookDetails" EntitySet="BookDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Publishers_Reference_Books" Association="Self.FK_Publishers_Reference_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Publishers" EntitySet="Publishers" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -51,6 +76,11 @@
           <AssociationSet Name="FK_BookDetails_Reference_Books" Association="DALModel.FK_BookDetails_Reference_Books">
             <End Role="Books" EntitySet="Books" />
             <End Role="BookDetails" EntitySet="BookDetails" />
+          </AssociationSet>
+          <EntitySet Name="Publishers" EntityType="DALModel.Publishers" />
+          <AssociationSet Name="FK_Publishers_Reference_Books" Association="DALModel.FK_Publishers_Reference_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Publishers" EntitySet="Publishers" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="BookDetails">
@@ -70,6 +100,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="BookDetails" Relationship="DALModel.FK_BookDetails_Reference_Books" FromRole="Books" ToRole="BookDetails" />
+          <NavigationProperty Name="Publishers" Relationship="DALModel.FK_Publishers_Reference_Books" FromRole="Books" ToRole="Publishers" />
         </EntityType>
         <Association Name="FK_BookDetails_Reference_Books">
           <End Type="DALModel.Books" Role="Books" Multiplicity="1" />
@@ -80,6 +111,27 @@
             </Principal>
             <Dependent Role="BookDetails">
               <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Publishers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="DALModel.FK_Publishers_Reference_Books" FromRole="Publishers" ToRole="Books" />
+        </EntityType>
+        <Association Name="FK_Publishers_Reference_Books">
+          <End Type="DALModel.Books" Role="Books" Multiplicity="1" />
+          <End Type="DALModel.Publishers" Role="Publishers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Publishers">
+              <PropertyRef Name="BookId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -102,6 +154,15 @@
             <EntityTypeMapping TypeName="DALModel.Books">
               <MappingFragment StoreEntitySet="Books">
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publishers">
+            <EntityTypeMapping TypeName="DALModel.Publishers">
+              <MappingFragment StoreEntitySet="Publishers">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
