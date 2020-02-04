@@ -50,48 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EF_Entities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EF_Entities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EF_Entities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EF_Entities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EF_Entities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EF_Entities.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="EF_Entities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EF_Entities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="EF_Entities.edmx.diagram">
-      <DependentUpon>EF_Entities.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="EF_Entities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EF_Entities.edmx</DependentUpon>
-      <LastGenOutput>EF_Entities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EF_Entities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EF_Entities.edmx</DependentUpon>
-      <LastGenOutput>EF_Entities.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
