@@ -65,12 +65,5 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Books.sql" />
-    <Build Include="dbo\Tables\BookDetails.sql" />
-    <Build Include="dbo\Tables\Publishers.sql" />
-    <Build Include="dbo\Tables\Authors.sql" />
-    <Build Include="dbo\Tables\BooksAuthors.sql" />
-    <Build Include="dbo\Views\vBook.sql" />
-    <Build Include="dbo\Functions\CountOfBooksByAuthor.sql" />
-    <Build Include="dbo\Stored Procedures\BooksListByAuthor_sp.sql" />
   </ItemGroup>
 </Project>
